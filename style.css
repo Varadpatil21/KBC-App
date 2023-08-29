@@ -98,3 +98,11 @@ body{
     background:#222;
     color:#fff;
 }
+
+.correct{
+    background-color: #9aeabc;
+}
+
+.incorrect{
+    background-color: #ff9393;
+}
