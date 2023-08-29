@@ -106,3 +106,26 @@ body{
 .incorrect{
     background-color: #ff9393;
 }
+.main{
+    display: flex;
+    flex-direction: row;
+    
+   
+}
+
+.dhanrashi{
+    background-color: #fff;
+    margin:65px 1200px 10px;
+    position: absolute;
+    padding: 30px 41px;
+    border-radius: 15px;
+}
+
+.money{
+    background-color: rgb(52, 176, 243);
+    color: black;
+    margin-bottom: 2px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
