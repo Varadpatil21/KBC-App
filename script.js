@@ -29,53 +29,6 @@ const questions=[{
 const quetsionele=document.getElementById('quest')
 const answerbutt=document.getElementById('answer-button')
 
-// let currIndex=0
-
-// function startQuiz(){
-//     currIndex=0;
-//     showQuestion();
-// }
-
-// function showQuestion()
-// {
-//     answerbutt.innerHTML=""
-//     let currquestion=questions[currIndex];
-//     let quesNo=currIndex+1;
-//     quetsionele.innerText=`${quesNo}. ${currquestion.question}`
-
-//     currquestion.answers.forEach(answer=>{
-//         const button=document.createElement("button")
-//         button.innerText=answer.text
-//         button.classList.add("btn")
-//         answerbutt.append(button)
-//         if(answer.correct)
-//         {
-//             button.dataset.correct=answer.correct
-//         }
-//         button.addEventListener("click",selectans)
-//     })
-// }
-
-// function selectans(e){
-//     const selectbtn=e.target
-//     const iscorr=selectbtn.dataset.correct==="true"
-//     if(iscorr)
-//         selectbtn.classList.add("correct")
-//     else
-//         selectbtn.classList.add("incorrect")
-
-//     Array.from(answerbutt.children).forEach(button=>{
-//         if(button.dataset.correct==="true")
-//         {
-//             button.classList.add("correct")
-//         }
-//         button.disabled=true;
-//     })
-
-
-//     }   
-// startQuiz();
-// ... (previous code)
 
 let score = 0; // Initialize the score
 
@@ -86,8 +39,15 @@ function startQuiz() {
 }
 
 function showQuestion() {
+
+    if (currIndex > 0) {
+        let prevMon = document.getElementById(`m${currIndex}`);
+        prevMon.style.backgroundColor = "";
+    }
     answerbutt.innerHTML = "";
     let currquestion = questions[currIndex];
+    let mon=document.getElementById(`m${currIndex+1}`)
+    mon.style.backgroundColor="rgb(45, 250, 8)";
     let quesNo = currIndex + 1;
     quetsionele.innerText = `${quesNo}. ${currquestion.question}`;
 
@@ -101,6 +61,7 @@ function showQuestion() {
         }
         button.addEventListener("click", selectans);
     });
+    mon.style.removeProperty(backgroundColor)
 }
 
 function selectans(e) {
