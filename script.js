@@ -35,11 +35,11 @@ const quetsionele=document.getElementById('quest')
 const answerbutt=document.getElementById('answer-button')
 
 
-let score = 0; // Initialize the score
+let score = 0; 
 
 function startQuiz() {
     currIndex = 0;
-    score = 0; // Reset the score
+    score = 0; 
     showQuestion();
 }
 
@@ -77,13 +77,13 @@ function selectans(e) {
     
     if (isCorrect) {
         selectbtn.classList.add("correct");
-        score++; // Increase the score for correct answers
+        score++; 
     } else {
         selectbtn.classList.add("incorrect");
         wronganswer.play();
         setTimeout(gameOver,10000);
         
-        return; // End the game on incorrect answer
+        return; 
     }
 
     Array.from(answerbutt.children).forEach(button => {
@@ -93,12 +93,11 @@ function selectans(e) {
         button.disabled = true;
     });
 
-    // Show the next question or end the game
     if (currIndex < questions.length - 1) {
         currIndex++;
-        setTimeout(showQuestion, 1000); // Show the next question after a delay
+        setTimeout(showQuestion, 1000); 
     } else {
-        // End of questions, show final score or a completion message
+       
         setTimeout(showScore, 1000);
     }
 }
