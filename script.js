@@ -2,6 +2,8 @@ let my = document.getElementById('name');
 let player = document.getElementById('Player-name');
 let press = document.getElementById('btn');
 let prop=document.getElementById('quiz')
+let sound=document.getElementById('mysound')
+let wronganswer=document.getElementById('wrong')
 
 const inputname = () => {
     let text = my.value;
@@ -10,6 +12,9 @@ const inputname = () => {
     } else {
         player.innerText = `Player Name: ${text}`;
         prop.classList.remove('hidden')
+        let mon=document.getElementById('m1')
+        mon.style.backgroundColor="rgb(45, 250, 8)"
+        sound.play();
     }
    
 };
@@ -39,15 +44,17 @@ function startQuiz() {
 }
 
 function showQuestion() {
-
+    
     if (currIndex > 0) {
         let prevMon = document.getElementById(`m${currIndex}`);
         prevMon.style.backgroundColor = "";
+        sound.play();
     }
     answerbutt.innerHTML = "";
     let currquestion = questions[currIndex];
     let mon=document.getElementById(`m${currIndex+1}`)
-    mon.style.backgroundColor="rgb(45, 250, 8)";
+    if(currIndex!=0)
+        mon.style.backgroundColor="rgb(45, 250, 8)";
     let quesNo = currIndex + 1;
     quetsionele.innerText = `${quesNo}. ${currquestion.question}`;
 
@@ -73,7 +80,9 @@ function selectans(e) {
         score++; // Increase the score for correct answers
     } else {
         selectbtn.classList.add("incorrect");
-        gameOver();
+        wronganswer.play();
+        setTimeout(gameOver,10000);
+        
         return; // End the game on incorrect answer
     }
 
