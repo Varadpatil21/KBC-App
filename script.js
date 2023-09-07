@@ -15,6 +15,7 @@ const inputname = () => {
         let mon=document.getElementById('m1')
         mon.style.backgroundColor="rgb(45, 250, 8)"
         sound.play();
+        starttimer();
     }
    
 };
@@ -36,13 +37,26 @@ const answerbutt=document.getElementById('answer-button')
 
 
 let score = 0; // Initialize the score
-
+let time=45;
 function startQuiz() {
     currIndex = 0;
     score = 0; // Reset the score
     showQuestion();
 }
+const starttimer=()=>{
+    let mytime=document.getElementById('timer');
+    mytime.innerText=time
+    if(time===0)
+    {
+        clearInterval(int);
+        alert("Time over")
+    }
+    else
+        time--;
+ 
 
+}
+let int=setInterval(starttimer,1000);
 function showQuestion() {
     
     if (currIndex > 0) {
